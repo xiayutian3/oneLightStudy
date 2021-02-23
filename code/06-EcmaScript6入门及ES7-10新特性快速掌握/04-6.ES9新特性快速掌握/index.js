@@ -249,8 +249,8 @@
 // const dateStr = "2030-08-01"
 // const reg = /([0-9]{4})-([0-9]{2})-([0-9]{2})/
 // const res = reg.exec(dateStr)
-// // console.log(res)
-// // console.log(res[1],res[2],res[3])
+// console.log(res)
+// console.log(res[1],res[2],res[3])
 
 // //es9的写法 给捕获的分组自定义名称 ?<name>
 // const reg1 = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<date>[0-9]{2})/

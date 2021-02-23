@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./index.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+  #手写promise A+
+  ## Promise 自身的状态
+  1.state 存放当前的状态
+  2.value 存放当前状态的值
+  3.then 方法，返回值也是一个Promise
+  4.catch方法
+  5.finally方法
+  6.静态方法，快速创建一个Promise，如Promise.all Promise.resolve
+
+  ## 实战案例
+  1.实现一个promise，在setTimeout中去 resolve
+  2.实现一个promise，直接同步resolve
+  3.实现一个promise，防止resolve多次
+  4.实现一个promise，可以让then方法链式调用
+  5.实现一个promise，支持空then函数
+  6.实现一个promise，支持then传递thenable对象
+  7.实现一个promise，支持then传递promise对象
+  8.实现一个promise，支持resolve传递promise对象
+  9.实现一个promise，处理then中的循环promise
+  10.实现一个promise，支持静态方法Promise。all
+  11.实现一个promise，支持 reject和catch
+
+  -->
+
+  <script>
+    //步骤1
+    // new Promise((resolve,reject)=>{
+    //   setTimeout(()=>{
+    //     resolve("step1")
+    //   },1000)
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+    // //自定义
+    // new MyPromise((resolve,reject)=>{
+    //   setTimeout(()=>{
+    //     resolve("step1")
+    //   },1000)
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+    // //步骤2
+    // new MyPromise((resolve,reject)=>{
+    //     resolve("step2")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+    // //步骤3
+    // new MyPromise((resolve,reject)=>{
+    //     resolve("step3")
+    //     resolve("step3.1")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+    //  //步骤4
+    // new MyPromise((resolve,reject)=>{
+    //     resolve("step4")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    //   return "step4.1"
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+    // //步骤5
+    // new MyPromise((resolve,reject)=>{
+    //   resolve("step5")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    //   return "step5.1"
+    // })
+    // .then()
+    // .then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+    //   //步骤6
+    // new MyPromise((resolve,reject)=>{
+    //   resolve("step6")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    //   return {
+    //     then(r){
+    //       r("step6.1")
+    //     }
+    //   }
+    // })
+    // .then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+
+    // //步骤7
+    // new MyPromise((resolve,reject)=>{
+    //   resolve("step7")
+    // }).then(data =>{
+    //   console.log("获取到数据：",data)
+    //   return new Promise((resolve,reject)=>{
+    //     resolve("step7.1")
+    //   })
+    // })
+    // .then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+    // //步骤8
+    // new MyPromise((resolve,reject)=>{
+    //   resolve(new Promise((resolve,reject)=>{
+    //     resolve("step8")
+    //   }))
+    // })
+    // .then(data =>{
+    //   console.log("获取到数据：",data)
+    // })
+
+
+
+    //步骤9
+    const promise = new MyPromise((resolve,reject)=>{
+      resolve('step9')
+    })
+    const promise1 = promise.then(res=>{ //返回他之前的promise，造成循环引用
+      return promise1
+    })
+  </script>
+</body>
+</html>
