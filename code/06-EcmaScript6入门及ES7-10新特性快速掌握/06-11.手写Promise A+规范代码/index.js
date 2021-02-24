@@ -104,14 +104,15 @@ class MyPromise {
         if (this.state === PENDING) { 
           this.value = val
           this.state = REJECTED
-          this.rejectedCallbacks.map(fn => fn(this.value))
+          this.rejectedCallbacks.map(fn => fn())
         }
       })
 
     }
     fn(resolve, reject)
   }
-  then(onFulfilled= val=>val,onRejected = err=>{throw new Error(err)} ) {  //处理空then方法，传什么返回什么   err=>{throw new Error(err)}
+  // then(onFulfilled= val=>val,onRejected = err=>{throw new Error(err)} ) {  //处理空then方法，传什么返回什么   err=>{throw new Error(err)}
+  then(onFulfilled= val=>val,onRejected) {  //处理空then方法，传什么返回什么   err=>{throw new Error(err)}
   let promise2 = null
   // 处理已完成的promise（成功）
   if (this.state === FULFILLED) {
@@ -143,13 +144,32 @@ class MyPromise {
           promiseResolutionProcedure(promise2,x,resolve,reject)
         })
         //失败
-        this.rejectedCallbacks.push(()=>{
-          const x = onRejected(this.value)  //return "step11" 返回一个新的promise
-          promiseResolutionProcedure(promise2,x,resolve,reject)
-        })
+        if(onRejected){
+          this.rejectedCallbacks.push(()=>{
+            const x = onRejected(this.value)  //return "step11" 返回一个新的promise
+            promiseResolutionProcedure(promise2,x,resolve,reject)
+          })
+        }
       })
 
       return promise2
+    }
+  }
+  catch(onRejected){
+    debugger
+    if (this.state === PENDING) { //PENDING状态才添加
+      //缓存起来，等resolve的时候调用
+      // this.resolveCallbacks.push(onFulfilled)
+       const promise3 =  new MyPromise((resolve,reject)=>{
+        //失败
+        this.rejectedCallbacks.push(()=>{
+          console.log(1234556)
+          const x = onRejected(this.value)  //return "step11" 返回一个新的promise
+          promiseResolutionProcedure(promise3,x,resolve,reject)
+        })
+      })
+
+      return promise3
     }
   }
   

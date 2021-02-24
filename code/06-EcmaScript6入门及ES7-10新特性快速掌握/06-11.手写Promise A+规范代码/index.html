@@ -164,35 +164,36 @@
 
 
 
-    // //步骤11
-    // const promise = new MyPromise((resolve,reject)=>{
-    //   reject('step11')
-    // }).then((result) => {
+    //步骤11
+    const promise = new MyPromise((resolve,reject)=>{
+      reject('step11')
+    })
+    // .then((result) => {
     // console.log("result", result)
     // }
     // ,err=>{
     //   console.log("err", err)
     // }
     // )
-    // // .catch((err) => {
-    // //   console.log("err", err)
-    // // });
+    .catch((err) => {
+      console.log("err", err)
+    });
 
 
 
 
-    //步骤12
-    const promise = new MyPromise((resolve,reject)=>{
-      resolve('step12')
-    })
-    setTimeout(()=>{
-      promise.then((result) => {
-        console.log("result", result)
-      })
-      promise.then((result) => {
-        console.log("result", result)
-      })
-    },1000)
+    // //步骤12
+    // const promise = new MyPromise((resolve,reject)=>{
+    //   resolve('step12')
+    // })
+    // setTimeout(()=>{
+    //   promise.then((result) => {
+    //     console.log("result", result)
+    //   })
+    //   promise.then((result) => {
+    //     console.log("result", result)
+    //   })
+    // },1000)
   </script>
 </body>
 </html>
