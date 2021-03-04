@@ -1,0 +1,68 @@
+Node.js net模块
+
+基本概念
+net tcp封装 核心模块
+http tcp层 做了比较多的数据封装
+客户端与服务端通信 socket  net.socket
+组成
+  net.server: socket
+  net.socket  全双工的stream接口
+共性和差异
+  server(服务端) pipe  client（客户端）
+  port 8080 
+  监听端口              访问端口
+
+
+
+写个服务端与客户端交互的例子
+net模块 方法  属性
+
+服务端 三步
+  createServer
+  listen 端口 等待客户端的接入
+  socket data ,close 完成客户端的交互
+
+客户端 三步
+  创建socket
+  连接指定的ip端口
+  监听data，close完成与服务端交互
+
+
+
+
+
+net.server类
+  创建server类    createServer
+  listen()       server.listen(端口号，ip)
+  监听事件    on
+    listening： 当服务绑定后触发
+    connection  新连接建立时触发   socket
+    close
+    error
+
+  方法
+    listen()
+    close()
+    address()   返回绑定地址  没有的话就是空对象
+
+
+
+net.socket类
+  创建一个连接net.connect(端口，ip)  //默认ip localhost，也可以是ip地址
+  监听事件 on
+    connect
+    data:接受到数据时触发，socket.setEncoding('utf8') //设置字符编码
+    end   关闭事件
+    timeout //超时事件
+    error 错误事件
+
+  方法
+    connect（）
+    write（写入内容，） //默认 utf8格式
+    setTimeout 设置超时时间
+
+  属性
+    netScoket.localPort  本地端口号
+    localAddress  //本地地址
+    remotePort
+    remoteAddress
