@@ -1,0 +1,19 @@
+
+{% extends './layout.html' %}
+
+{% block title %}index{{title}}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="stylesheets/index.css"> 
+<script src="scripts/index.js"></script>
+{% endblock %}
+
+{% block content %}
+<form>
+  <div class="form-group">
+    <label for="username">用户名</label>
+    <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="请输入用户名">
+  </div>
+  <button type="submit" id="submitbtn" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

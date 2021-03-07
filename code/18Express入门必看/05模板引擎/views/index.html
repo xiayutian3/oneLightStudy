@@ -1,0 +1,19 @@
+
+{% extends './layout.html' %}
+
+{% block title %}index{{title}}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="stylesheets/index.css"> 
+
+{% endblock %}
+
+{% block content %}
+    <p>This is just an awesome page.</p>
+    <h1>hello,lego.</h1>
+    <p>{{content}}</p>
+    <script>
+
+        //require('pages/index/main');
+    </script>
+{% endblock %}
