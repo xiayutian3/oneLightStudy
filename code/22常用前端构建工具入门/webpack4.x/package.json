@@ -1,0 +1,20 @@
+{
+  "name": "webpack4.x",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production --module-bind js=babel-loader",
+    "dev": "webpack --mode development --module-bind js=babel-loader"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12"
+  }
+}
