@@ -166,3 +166,128 @@ hook使用规则
   2.只在react函数中调用hook
 
 
+
+
+
+
+#react router快速入门
+  v5 v4 v3 v2 
+  v4/v5 用法和理念基本是一致的   v3/v2 差异较大
+  版本差异
+    v4和v4前的版本比较
+      v4：稳定版，大多数项目，v4属于动态路由
+        react-router：
+          react-router，：路由基础库
+          react-router-dom，：适用于浏览器环境的再次封装
+          react-router-native，：适用于react-native环境的再次封装
+          react-router-config：静态路由配置助手
+
+      之前：静态路由
+
+    v5 vs v4
+      v5:完全兼容v4
+        支持react16，兼容react router4
+        消除了严格模式的警告
+        适用于create-react-context 实现context api
+    v4.4 ^react-router:"^4.3.1: 导致报错 v5
+    稳定性与兼容性
+    改进与新特性
+      》=15 react版本的完全兼容，react16提供更好的支持
+      升级了react context api ，消除了严格模式的警告
+      引入了预优化build process.env.NODE_ENV
+
+      import Router from 'react-router/Router'
+
+      import {Router,Switch} from 'react-router'
+
+      <Route path="user/:id" component={User}>
+      <Route path="info/:id" component={User}>
+      新特性，path 可以是数组 ，匹配其中一个就渲染组件
+      <Route path={["user/:id","info/:id"]} component={User}>
+      <Link innerRef> <Route component> 使用React.forwardRef
+
+      目前react router 中已经不需要路由配置，现在一切皆组件
+
+
+
+前端路由
+  原理：检测浏览器url的变化，截获url地址，然后经行url路由匹配
+  hash：描点 hashchange
+    刷新页面，不会发请求
+  html5：history
+    pushState（）
+    replaceState（）
+    onpopstate事件
+    注意：页面刷新的时候，浏览器会向服务器发送请求
+
+第一个基础的路由配置
+  HashRouter
+  BrowerRouter Route
+
+react router 常见的概念
+  Router组件
+    每个router都会创建一个history对象，用来保存当前的位置的追踪
+    web 
+      HashRouter 只处理静态url
+      BrowerRouter 非静态的站点，要处理不同的url
+    react native
+      MenoryHistory
+  Route组件
+    只是一个具有渲染方法的普通react组件，路由匹配成功渲染该组件
+    常用的属性
+      path：'' 路由匹配规则 可以省略，字符串类型
+      exact：boolean 严格模式 true
+      component：渲染的组件
+      render：函数形势 逻辑操作， path匹配的时候执行
+      children：函数形势 逻辑操作，任何时候都会执行  match{} null
+      children 》 component 》 render
+    
+  Switch组件
+    最多只能取出一个文具
+    最多只能匹配一个组件
+    作用，可以将Route组件分组
+    404页面的渲染
+
+  Link与NavLink组件
+    声明式的可访问导航 
+    to：string类型  ，对象类型 {pathname,search,hash,state}
+    replace:boolean true  替换当前的历史记录
+    NavLink
+      特殊版的Link ，当匹配的时候可以添加样式
+      activeClassName  activeStyle
+      exact 严格模式
+
+  Redirect组件
+    重定向组件 to是必须的
+    to：字符串，对象
+    push：boolean true  history.push、
+    from ：将要进入的url
+    exact：true
+
+
+  History对象
+    每个router都会创建一个history对象，用来保存当前的位置的追踪
+    编程式导航
+      push
+
+  withRouter组件
+    没有经过路由的匹配
+    让浏览器直接打开的地址 也有props.history   history对象
+    包裹 app组件  withRouter(App);
+
+动态路由
+  路由规则不是预先确定的，在渲染过程中确定
+  info/1  info/2
+  :id
+  props.match.params.id
+
+嵌套路由
+  二级路由
+
+
+
+
+
+
+
+
