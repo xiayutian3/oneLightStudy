@@ -11,6 +11,8 @@ import About from './views/About'
 import Home from './views/Home'
 import Info from './views/Info'
 import NotFound from './views/NotFound'
+//redux测试
+import ReduxComponent from './redux/ReduxComponent'
 
 
 
@@ -19,7 +21,8 @@ import NotFound from './views/NotFound'
 function App(props) {
   // 没有经过路由的匹配
   //浏览器直接打开的 没有history对象,    加上 withRouter包裹就有了
-  console.log('app',props.history);
+  // console.log('app',props.history);
+  
   // const isLogin = false
 
   const divtitle = "我是app"
@@ -56,6 +59,12 @@ function App(props) {
         <Route path="/about/:id" component={About}></Route>
         <Route component={NotFound}></Route>
       </Switch>
+
+
+
+      <ReduxComponent/>
+
+
       
       {/* <Route path="/render" render={()=>{
         //逻辑操作

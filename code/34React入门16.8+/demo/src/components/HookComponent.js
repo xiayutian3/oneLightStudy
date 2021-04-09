@@ -10,8 +10,9 @@ function HookComponent(){
   
   const inputEl = useRef(null)
 
+  // eslint-disable-next-line no-unused-vars
   const [dyNumber,setDyNumber] = useNumber()
-  console.log('自定义的hookuseNumber',dyNumber,setDyNumber)
+  // console.log('自定义的hookuseNumber',dyNumber,setDyNumber)
 
   const num = 2
   //useState 传任意类型

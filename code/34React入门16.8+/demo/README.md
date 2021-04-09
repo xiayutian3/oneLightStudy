@@ -290,4 +290,37 @@ react router 常见的概念
 
 
 
+#redux 
+  redux react-redux
+  
+  组件间的数据传递，共享。connect函数  react和redux的连接
+  redux可以将数据连接到任何组件中
+    connect函数
+  action 描述动作，指令。type {type：'add'} ，单独的模块，文件来存放action（项目规模变大以后）
+  进行拆分数据处理逻辑-》不应该拆分store，应该拆分reducer -》 combineReducers，再合并reducer
+
+redux的三大原则
+  1.单一数据源
+  2.state是只读的
+  3.reducer使用纯函数执行修改
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
