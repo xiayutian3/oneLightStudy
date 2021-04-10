@@ -304,6 +304,9 @@ redux的三大原则
   2.state是只读的
   3.reducer使用纯函数执行修改
 
+实际redux应用 副作用
+  redux-thunk ，进行不纯的操作,增强action
+  thunk action
 
 
 

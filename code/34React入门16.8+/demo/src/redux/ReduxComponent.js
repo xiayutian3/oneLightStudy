@@ -2,6 +2,9 @@ import React from 'react'
 
 // redux react-redux
 import store from '../store/index'
+//connet函数，provider组件
+import {Provider} from 'react-redux'
+import ReduxCounter from './ReduxCounter'
 
 class ReduxComp extends React.Component{
   constructor(props) {
@@ -28,6 +31,11 @@ class ReduxComp extends React.Component{
           <button onClick={this.handleAdd}>加一</button>
           <span>{this.state.count}</span>
           <button onClick={this.handleReduce}>减一</button>
+          <div>
+          <Provider store={store}>
+            <ReduxCounter></ReduxCounter>
+          </Provider>
+          </div>
         </div>
       </div>
     )
