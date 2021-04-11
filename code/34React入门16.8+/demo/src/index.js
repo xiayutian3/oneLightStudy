@@ -6,7 +6,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom' 
 
-
 // 第三个参数，回调函数
 ReactDOM.render(
   <BrowserRouter>
