@@ -7,6 +7,7 @@ import {Context} from 'koa'
 //依赖注入
 class  IndexController{
   private lServer;
+  //根据文件名注入server
   constructor({lServer}){
     this.lServer = lServer
   }
