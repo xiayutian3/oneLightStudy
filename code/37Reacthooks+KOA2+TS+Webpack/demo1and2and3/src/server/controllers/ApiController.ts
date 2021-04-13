@@ -6,6 +6,7 @@ import {Context} from 'koa'
 @route("/api")
 //依赖注入
 class  ApiController{
+  //根据文件名注入server
   private indexService;
   constructor({indexService}){
     this.indexService = indexService
