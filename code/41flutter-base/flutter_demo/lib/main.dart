@@ -1,8 +1,31 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 
+// void main() {
+//   runApp(MyApp());
+// }
+// 
+// 
+// try catch  捕获错误也行
+// 
+// 
+// 捕获错误
 void main() {
-  runApp(MyApp());
+  FlutterError.onError = (FlutterErrorDetails details){
+    //错误。日志的收集
+    print('flutter catch error $details');
+  };
+  runZonedGuarded(
+    ()=>runApp(MyApp()),
+    //错误信息收集，堆栈信息收集
+    (Object obj,StackTrace stack){
+      //错误。日志的收集
+      print('flutter catch error:$obj,\n$stack');
+    }
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    print(randomBetween(10, 20)); 
+    //调试
+    print(randomBetween(10, 20));  //调试1
+    //调试2
+    debugger();
+    // 
+    // //调试3
+    // flutter devices
+    // flutter run -d 型号
+
     // setState(() {
     //   _counter++;
     // });

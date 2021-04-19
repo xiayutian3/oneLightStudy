@@ -58,7 +58,7 @@ class Tool {
     this.num = num;
     this.name = name;
   }
-  //简写
+  //简写 （构造函数简写形式）
   // Tool(this.num,this.name);
   // 
   //命名构造函数
