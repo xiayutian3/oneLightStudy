@@ -83,7 +83,7 @@ class Child extends Tool{
   }
 }
 
-//抽象类与接口
+//抽象类与接口  abstract
 abstract class AbstractTool{
   String getName(); //抽象函数
   String getString(){ //普通函数

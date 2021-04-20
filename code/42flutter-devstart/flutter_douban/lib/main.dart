@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_douban/module/demo/stateful_page.dart';
+import 'package:flutter_douban/module/demo/stateless_page.dart';
 import 'package:flutter_douban/module/list/list_page.dart';
 import 'package:flutter_douban/module/model/douban_model.dart';
 import 'package:flutter_douban/module/search/search_page.dart';
@@ -57,7 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // Navigator.pushNamed(context, '/search');
     //路由跳转 带参数
     Navigator.push(context, MaterialPageRoute(builder: (context){
-      return ListPage(item: ListSort.Movie);
+      // return ListPage(item: ListSort.Movie);
+      
+      // //跳转   statelessPage
+      // return StatelessPage(text: '我是传递过来的值',);
+
+       //跳转   statefulPage
+      return StatefulPage();
     }));
     
     // setState(() {
@@ -67,6 +76,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //ios 风格
+    // return CupertinoPageScaffold(
+    //   navigationBar: CupertinoNavigationBar(middle: Text('this is ios cuper'),
+    //   // child: Center(
+    //   //   child:  
+    //   // ),
+    //   ),
+    // );
+
+
+    //安卓风格
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
