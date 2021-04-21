@@ -87,44 +87,175 @@ _handleClick(){
       appBar:AppBar(
         title: Text('stateful'),
       ),
-      body: Container(
-        child: Center(
-          child: Column(  //列式布局
-            children: <Widget> [
-              Text(        //Text的详细使用
-                'this is stateful page1',
-                style: TextStyle(    
-                  color: Colors.red,
-                  fontSize: 30,
-                  background: Paint()..color = Colors.amber
-                  ),
-              ),
-              RaisedButton(         //按钮组件
-                child: Text('悬浮按钮'),
-                onPressed: (){},
-              ),
-              FlatButton(
-                child: Text('扁平按钮'),
-                onPressed: (){},
-              ),
-              OutlineButton(
-                child: Text('边框按钮'),
-                onPressed: (){},
-              ),
+      body: Center(
+        child: Container(   //组合类容器，里面有很多属性，
+          width: 100,
+          height: 100,
+          margin: EdgeInsets.only(top:100),
+          decoration: BoxDecoration(   //修饰，样式修饰
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                offset: Offset(4,4),
+                blurRadius: 4
+              )
             ]
           ),
+          child: Text('this is text'),
+        )
+      ),
+
+
+
+
+
+      // body: Center(
+      //   child:Transform.rotate(  //变化类组件
+      //     angle: 120,
+      //     child: Container(  //组合类容器
+      //       child: Text('this is text'),
+      //     ),
+      //   )
+      // ),
+
+
+
+
+      // body: SizedBox(  //限制类组件,作用于子元素,固定盒子大小
+      //   width: 40,
+      //   height: 40,
+      //   child: Container(color: Colors.amberAccent,),
+      // ),
+
+
+
+
+
+      // body: ConstrainedBox(  //限制类组件,作用于子元素
+      //   constraints: BoxConstraints(
+      //     minWidth: double.infinity,  //无限大
+      //     minHeight: 100
+      //   ),
+      //   child: Container(
+      //     height: 40,  //40小于100，不起作用，最小值是100类似于css的min-height
+      //     color: Colors.greenAccent,
+      //   ),
+      // ),
+
+
+
+
+      // body: Padding(  //填充组件，相当于一个容器
+      //   padding: EdgeInsets.fromLTRB(40, 60, 10, 80),
+      //   child: Container(
+      //     color:Colors.green
+      //   ),
+      // ),
+
+
+      // body: ConstrainedBox( //对组件大小，进行约束。
+      //     //尽可能的扩展
+      //   constraints: BoxConstraints.expand(),
+      //   child: Stack(       //层叠布局
+      //     alignment: Alignment.center,
+      //     children: <Widget>[
+      //       Container(
+      //         child: Text(
+      //           'this is container',
+      //           style: TextStyle(color: Colors.deepOrangeAccent),
+      //         ),
+      //       ),
+      //       Positioned(
+      //         left:20,
+      //         child: Text('this is text')
+      //       ),
+      //       Positioned(
+      //         top:40,
+      //         child: Text('this is text22')
+      //       )
+      //     ],
+      //   ),  
+      // ),
+
+      // body: Container(
+      //   child: Center(
+      //      child: Flex(  //弹性布局
+      //      direction: Axis.vertical, //布局的方向
+      //      children: <Widget> [
+      //        Expanded(
+      //          flex: 2,  //弹性布局系数
+      //          child: Column(
+      //          children: <Widget> [
+      //             Text(        //Text的详细使用
+      //               'this is stateful page1',
+      //               style: TextStyle(    
+      //                 color: Colors.red,
+      //                 fontSize: 30,
+      //                 background: Paint()..color = Colors.amber
+      //                 ),
+      //             ),
+      //             RaisedButton(         //按钮组件
+      //               child: Text('悬浮按钮'),
+      //               onPressed: (){},
+      //             ),
+      //             FlatButton(
+      //               child: Text('扁平按钮'),
+      //               onPressed: (){},
+      //             ),
+      //             OutlineButton(
+      //               child: Text('边框按钮'),
+      //               onPressed: (){},
+      //             ),
+      //           ]
+      //        ),),
+      //        Expanded(child: Container(
+      //          width: 50,
+      //          color: Colors.amberAccent,
+      //       ),),
+      //      ]
+      //     ),
+
+
+
+
+
+      //     // child: Column(  //列式布局
+      //     //   mainAxisAlignment: MainAxisAlignment.center, //主轴的对齐方式
+      //     //   children: <Widget> [
+      //     //     Text(        //Text的详细使用
+      //     //       'this is stateful page1',
+      //     //       style: TextStyle(    
+      //     //         color: Colors.red,
+      //     //         fontSize: 30,
+      //     //         background: Paint()..color = Colors.amber
+      //     //         ),
+      //     //     ),
+      //     //     RaisedButton(         //按钮组件
+      //     //       child: Text('悬浮按钮'),
+      //     //       onPressed: (){},
+      //     //     ),
+      //     //     FlatButton(
+      //     //       child: Text('扁平按钮'),
+      //     //       onPressed: (){},
+      //     //     ),
+      //     //     OutlineButton(
+      //     //       child: Text('边框按钮'),
+      //     //       onPressed: (){},
+      //     //     ),
+      //     //   ]
+      //     // ),
 
           
-          // child: Text(        //Text的详细使用
-          //   'this is stateful page1',
-          //   style: TextStyle(    
-          //     color: Colors.red,
-          //     fontSize: 30,
-          //     background: Paint()..color = Colors.amber
-          //     ),
-          // ),
-        ),
-      ),
+      //     // child: Text(        //Text的详细使用
+      //     //   'this is stateful page1',
+      //     //   style: TextStyle(    
+      //     //     color: Colors.red,
+      //     //     fontSize: 30,
+      //     //     background: Paint()..color = Colors.amber
+      //     //     ),
+      //     // ),
+      //   ),
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: _handleClick,
         tooltip: 'Increment',
