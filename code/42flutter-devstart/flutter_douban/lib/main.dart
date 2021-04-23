@@ -2,11 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_douban/module/bot_nav_bar/bot_nav_bar.dart';
 import 'package:flutter_douban/module/demo/stateful_page.dart';
 import 'package:flutter_douban/module/demo/stateless_page.dart';
 import 'package:flutter_douban/module/list/list_page.dart';
 import 'package:flutter_douban/module/model/douban_model.dart';
 import 'package:flutter_douban/module/search/search_page.dart';
+
+import 'module/home/home_page.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -36,7 +39,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'Flutter Demo Home Page'), 
+      // 切换首页
+        home: BotNavBar(),
       //这里注册的路由不可以传参
       routes: {
         '/search':(context) => SearchPage()
