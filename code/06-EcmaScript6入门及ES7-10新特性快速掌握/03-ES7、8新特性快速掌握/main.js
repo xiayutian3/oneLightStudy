@@ -1,3 +1,14 @@
+// SharedArrayBuffer 与 Atomics   
+//给js带来了多线程的功能，高级特性，js引擎核心改造
+//共享内存主要思想：把多线程引入js
+//新的全局对象  SharedArrayBuffer
+// web worker  postMessage通信
+//多线程 竞争，Atomics
+
+// new SharedArrayBuffer(length)  //缓冲区大小，字节byte为单位  与arrayBuffer api一致，数据不能共享，但是ShareArrayBuffer数据可以共享，
+
+
+
 //创建一个worker进程
 const worker = new Worker("./worker.js")
 
