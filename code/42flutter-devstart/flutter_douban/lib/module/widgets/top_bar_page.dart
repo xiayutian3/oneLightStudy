@@ -11,7 +11,7 @@ class TopBarPage extends StatelessWidget{
   TopBarPage({  //构造函数的简写形式
     Key key,
     this.title,
-    this.hasLeading,
+    this.hasLeading = false,
     this.tabbar,
     this.body
   }):super(key: key); //调用父类的key经行赋值

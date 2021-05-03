@@ -122,7 +122,8 @@ class MyPromise {
   let promise2 = null
   // 处理已完成的promise（成功）
   if (this.state === FULFILLED) {
-    promise2 = new Promise((resolve,reject)=>{
+    // promise2 = new Promise((resolve,reject)=>{
+	promise2 = new MyPromise((resolve,reject)=>{	
       const x = onFulfilled(this.value)  //return "step4.1" 返回一个新的promise
       promiseResolutionProcedure(promise2,x,resolve,reject)
     })
@@ -131,7 +132,8 @@ class MyPromise {
 
    // 处理已完成的promise(失败)
    if (this.state === REJECTED) {
-    promise2 = new Promise((resolve,reject)=>{
+    // promise2 = new Promise((resolve,reject)=>{
+	promise2 = new MyPromise((resolve,reject)=>{
       const x = onRejected(this.value)  //return "step11" 返回一个新的promise
       promiseResolutionProcedure(promise2,x,resolve,reject)
     })
