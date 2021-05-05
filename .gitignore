@@ -55,6 +55,7 @@ yarn-error.log*
 .pub-cache/
 .pub/
 /build/
+finish-test
 
 # Web related
 lib/generated_plugin_registrant.dart

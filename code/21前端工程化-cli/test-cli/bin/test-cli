@@ -1,0 +1,21 @@
+#! /usr/bin/env node
+const figlet = require('figlet'); //输出文本
+const Printer = require('@darkobits/lolcatjs')//颜色变化
+const { program } = require('commander'); //输出配置
+const _version = require('../package.json').version  //版本号
+const str = figlet.textSync('test-cli')
+
+program.version( //版本号 --version
+  Printer.default.fromString(
+    `\n hello test cli \n version ${_version} \n ${str}`
+  )
+);
+program //帮助信息 --help
+  .option('-d, --debug', 'output extra debugging')
+  .option('-s, --small', 'small pizza size')
+  .option('-p, --pizza-type <type>', 'flavour of pizza');
+
+program.parse(process.argv);//接受用户的输入
+
+// console.log(Printer.default.fromString(str))
+// console.log("hello")

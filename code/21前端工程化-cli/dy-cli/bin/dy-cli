@@ -1,0 +1,109 @@
+#! /usr/bin/env node
+
+const figlet = require('figlet'); //生成ask码
+const Printer = require('@darkobits/lolcatjs') //字体变色
+const txt = figlet.textSync("hello world") + "\n" + "自定义脚手架";
+const prograrm = require('commander') //处理用户输入的参数
+const inquirer = require('inquirer');//跟用户进行交互
+const chalk = require('chalk') //跟用户说话
+const json2ts = require("json2ts"); //根据类型生成 interface接口
+const ora = require('ora'); //小loading
+const shell = require('shelljs'); //js 写linux命令
+// console.log(shell.pwd().stdout) //路径
+const download = require("download-git-repo") //下载git仓库
+const templateUrl = `direct:https://github.com/xiayutian3/diy-vue-cli.git` //下载git仓库 url
+
+// const result = Printer.default.fromString(txt)
+
+prograrm.version(Printer.default.fromString(txt), "-v,--version");
+prograrm.option("init", "初始化项目");
+prograrm.option("json2ts", "将接口生成interface ts");
+
+const bindHandler = {
+  init() {
+    // console.log("进入用户的初始化程序")
+    inquirer
+      .prompt([
+        {
+          type:'text',
+          message:"请输入文件夹的名称",
+          name:"dirname"
+        },
+        {
+          type: "list",
+          name: 'jskind',
+          message: "请选择使用的语言",
+          choices: ["ES6", "TypeScript"]
+        }
+      ])
+      .then(answers => {
+        // Use user feedback for... whatever!!
+        // 1.git准备开发好一个能容纳百川的项目
+        // 2.git 下载那个包
+        // 3.shelljs 根据用户选择对你的下载的包经行修改删除
+        // 4.在用户的桌面创建最终的项目
+        // 5.引导开发使用
+        const __dirname = answers.dirname //文件夹名称
+        console.log("🚀__dirname", __dirname)
+        if(__dirname){
+          const spinner = ora('download template...')
+          spinner.start();
+          const _pwd= shell.pwd().stdout; //获取命令所在的文件夹路径
+          console.log(_pwd)
+          const _projectPath = `${_pwd}/${__dirname}` //项目路径  //F:\study\oneLightStudy\code\21前端工程化-cli\dy-cli
+          shell.cd(_pwd) //进入目录
+          shell.rm("-rf" , _projectPath) //删除已存在的同名文件夹
+          shell.mkdir(__dirname) //创建文件夹
+          //下载模板
+          download(templateUrl,_projectPath,{ clone: true },(err)=>{
+            spinner.stop();//关掉loading
+            if(err){
+              // console.error("下载失败"+err.message)
+              console.log(chalk.red('下载异常'+err.message))
+            }else{
+              //修改模板 packjson 包名
+              shell.sed("-i","vuediy3",__dirname,_projectPath+'/package.json')
+            }
+          })
+        }
+      })
+  },
+  json2ts(jsonurl) {
+    const spinner = ora('接口正在生成中...')
+    spinner.start();
+    console.log("接口地址", jsonurl)
+    const jsonContent = {
+      code: 1,
+      info: {
+        message: "请求成功",
+        data: [
+          {
+            num: 1,
+            title: "王大光篡改"
+          }
+        ]
+      }
+    }
+    let result = json2ts.convert(JSON.stringify(jsonContent));
+    console.log(result) //interface接口
+    setTimeout(() => {
+      spinner.stop(); //关掉loading
+    }, 1000)
+
+  }
+}
+prograrm.usage("<cmd> [env]")
+  .arguments("<cmd> [env]")
+  .action(function (cmd, otherParams) {
+    // console.log(cmd)
+    const handler = bindHandler[cmd]
+    if (handler) {
+      handler(otherParams)
+    } else {
+      // console.log("暂未实现 "+cmd)
+      console.log(chalk.yellow("非常遗憾：") + "【" + chalk.red(cmd) + "】" + chalk.yellow("没有实现"))
+    }
+
+  })
+prograrm.parse(process.argv);
+// console.log(result);
