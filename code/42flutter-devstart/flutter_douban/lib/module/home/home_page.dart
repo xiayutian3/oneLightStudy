@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_douban/module/demo/future_page.dart';
 import 'package:flutter_douban/module/list/list_page.dart';
 import 'package:flutter_douban/module/model/douban_model.dart';
+import 'package:flutter_douban/module/user/user_page.dart';
 import 'package:flutter_douban/module/widgets/search_input.dart';
 import 'package:flutter_douban/module/widgets/top_bar_page.dart';
 
@@ -17,7 +19,10 @@ class _HomePageState extends State<HomePage> {
     // 
     // 带参数的跳转
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-      return ListPage(item:ListSort.Movie);
+      // return ListPage(item:ListSort.Movie);
+
+      // return UserPage();
+      return FuturePage(); //异步组件
     }));
   }
 

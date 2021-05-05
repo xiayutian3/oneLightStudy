@@ -36,8 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData(  //主题色
+        // primarySwatch: Colors.blue, //底部导航
+        primaryColor: Colors.red,  //主题，头部，底部导航
       ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'), 
       // 切换首页
