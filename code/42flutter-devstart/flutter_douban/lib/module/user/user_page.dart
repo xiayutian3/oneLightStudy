@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,9 +33,12 @@ class _UserPageState extends State<UserPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(  //导航拦截组件，功能型组件，不行ui界面
-      onWillPop: () async { //异步方法
-        if(_lastTime != null && DateTime.now().difference(_lastTime)>Duration(seconds:1)){
+    return WillPopScope(
+      //导航拦截组件，功能型组件，不行ui界面
+      onWillPop: () async {
+        //异步方法
+        if (_lastTime != null &&
+            DateTime.now().difference(_lastTime) > Duration(seconds: 1)) {
           return true;
         }
         _lastTime = DateTime.now();
@@ -41,17 +46,48 @@ class _UserPageState extends State<UserPage> {
       },
       child: Scaffold(
         appBar: AppBar(title: Text('this is user page')),
-        body: ListView.builder(
-            //列表
-            controller: _controller,
-            itemCount: 30,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text('this is list$index',
-                style: TextStyle(color: Theme.of(context).primaryColor), //使用我们定义的主题色
-                )
-              );
-            }),
+        body: NotificationListener<ClickNotification>(  //ClickNotification  自定义的消息通知
+            onNotification: (notification) {
+          //简写形式
+          print(notification.message);
+        },
+            // //通知
+            // onNotification: (notification) {
+            //   switch (notification.runtimeType) {
+            //     case ScrollStartNotification: //列表滑动开始
+            //       print('start');
+            //       break;
+            //     case ScrollUpdateNotification: //列表滑动更新
+            //       print('update');
+            //       break;
+            //     case OverscrollNotification: //超出列表范围
+            //       print('over');
+            //       break;
+            //     default:
+            //   }
+            // },
+            child: Builder(
+              builder: (context) {
+                return RaisedButton(
+                  onPressed: () => ClickNotification('我是自定义通知').dispatch(context),
+                  child: Text('button'),
+                );
+              },
+            )
+
+            // ListView.builder(
+            //     //列表
+            //     controller: _controller,
+            //     itemCount: 30,
+            //     itemBuilder: (BuildContext context, int index) {
+            //       return ListTile(
+            //           title: Text(
+            //         'this is list$index',
+            //         style: TextStyle(
+            //             color: Theme.of(context).primaryColor), //使用我们定义的主题色
+            //       ));
+            //     }),
+            ),
         floatingActionButton: _isShow
             ? FloatingActionButton(
                 //悬浮按钮
@@ -111,4 +147,10 @@ class _UserPageState extends State<UserPage> {
     //   // ),
     // );
   }
+}
+
+//显示自定义的通知
+class ClickNotification extends Notification {
+  final String message;
+  ClickNotification(this.message);
 }

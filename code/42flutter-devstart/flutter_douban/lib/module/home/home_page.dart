@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_douban/module/demo/event_page.dart';
 import 'package:flutter_douban/module/demo/future_page.dart';
 import 'package:flutter_douban/module/list/list_page.dart';
 import 'package:flutter_douban/module/model/douban_model.dart';
@@ -21,8 +22,9 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
       // return ListPage(item:ListSort.Movie);
 
-      // return UserPage();
-      return FuturePage(); //异步组件
+      // return UserPage(); //个人中心
+      // return FuturePage(); //异步组件
+      return EventPage();  //事件响应
     }));
   }
 
