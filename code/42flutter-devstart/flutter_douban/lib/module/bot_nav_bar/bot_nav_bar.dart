@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_douban/module/home/home_page.dart';
 import 'package:flutter_douban/module/user/user_page.dart';
+import 'package:flutter_douban/util/app_util.dart';
 
 class BotNavBar extends StatefulWidget{
   @override
@@ -20,6 +21,15 @@ class _BotNavBarState extends State<BotNavBar>{
       _currentIndex = index;
     });
   }
+
+//初始化获取 屏幕宽高
+  void _initApp(context){
+    AppUtil.screenWidth = MediaQuery.of(context).size.width;
+    AppUtil.screenHeight= MediaQuery.of(context).size.height;
+  }
+
+
+
   //导航切换的回调
   void _onItemTapped(int index){
     //页面动画  进入的页面 延迟时间  类似贝塞尔曲线动画
@@ -28,6 +38,7 @@ class _BotNavBarState extends State<BotNavBar>{
   
   @override
   Widget build(BuildContext context) {
+    _initApp(context);
     //脚手架
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(

@@ -264,7 +264,7 @@ _handleClick(){
           width: 40,
           height: 40,
           fit: BoxFit.cover,
-          image: NetworkImage('https://video.dsconsulting.com/dswebsite_2020/logo.png')
+          image: NetworkImage('https://video.dsconsulting.com/dswebsite_2020/logo.png') //网络图片
         )
       ),
     );

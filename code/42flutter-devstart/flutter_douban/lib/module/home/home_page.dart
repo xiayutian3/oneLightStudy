@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_douban/module/demo/event_page.dart';
 import 'package:flutter_douban/module/demo/future_page.dart';
+import 'package:flutter_douban/module/home/home_list_item.dart';
 import 'package:flutter_douban/module/list/list_page.dart';
 import 'package:flutter_douban/module/model/douban_model.dart';
 import 'package:flutter_douban/module/user/user_page.dart';
 import 'package:flutter_douban/module/widgets/search_input.dart';
 import 'package:flutter_douban/module/widgets/top_bar_page.dart';
+import 'package:flutter_douban/util/app_util.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,6 +36,7 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         //层叠布局
         children: <Widget>[
+          Container(),
           // 一个top 一个bottom
           _configTopBarWidget(),
           _configListVieWidget()
@@ -79,11 +82,29 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _configListVieWidget() {
-    return Container(
-      width: 200,
-      height: 100,
-      margin: EdgeInsets.only(top:170),
-      color: Colors.amber,
+    return Positioned(
+      top: 130,
+      child: Container(
+        width: AppUtil.screenWidth,
+        height: AppUtil.screenHeight-102,
+        // color: Colors.red,
+        child: ListView(  //首页列表展示
+          children: [
+            HomeListItem(
+              context:context,
+              itemTitle:ListSort.Movie
+            ),
+            HomeListItem(
+              context:context,
+              itemTitle:ListSort.Book
+            ),
+            HomeListItem(
+              context:context,
+              itemTitle:ListSort.Music
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
