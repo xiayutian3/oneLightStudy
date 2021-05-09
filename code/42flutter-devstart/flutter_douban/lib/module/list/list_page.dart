@@ -50,7 +50,7 @@ class _ListPageState extends State<ListPage> with SingleTickerProviderStateMixin
   List<Widget> _configTabBarViews(){
     List<Widget> tablist = [];
     var getTabLists = AppModel.getTabList(widget.item);
-    for(int i=0;i<getTabLists.length;i++){
+    for(int i=0;i<getTabLists.length;i++){ //循环list title，给对应的title 添加对应的页面内容
       tablist.add(Text(getTabLists[i]));
     }
     print(tablist);

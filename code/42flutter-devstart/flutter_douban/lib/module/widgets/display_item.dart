@@ -32,7 +32,14 @@ class DisPlayItem extends StatelessWidget {
           Container(
             height: 10,
           ),
-          RankItem()  // 评分组件
+          RankItem(
+            title: '电影标题',
+            startWidth:10,
+            width: 80,
+            height: 34,
+            rank: 4,
+            score: 7.6,
+          )  // 评分组件
         ],
       ),
     );
