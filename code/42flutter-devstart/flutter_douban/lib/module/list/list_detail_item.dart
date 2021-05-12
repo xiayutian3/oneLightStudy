@@ -12,7 +12,7 @@ class ListDetailItem extends StatelessWidget{
         padding: EdgeInsets.only(left:24,right: 24,top:9),
         child: Row(
           children:<Widget>[
-            FadeInImage.assetNetwork(
+            FadeInImage.assetNetwork( //加载网络图片
               width: 86,
               height: 112,
               placeholder: 'lib/images/btn.jpg', 
