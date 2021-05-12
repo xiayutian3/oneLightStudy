@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   # 请求库
   dio: ^2.2.2  
-  # 下拉刷新
+  # 上/下拉刷新(通过配置)
   pull_to_refresh: ^1.5.7
   # 本地存储
   path_provider: 0.4.1
